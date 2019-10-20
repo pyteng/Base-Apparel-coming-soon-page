@@ -1,0 +1,186 @@
+:root {
+  box-sizing: border-box;
+}
+
+*,
+::before,
+::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 16px;
+}
+
+/**REUSABLE**/
+.highlight {
+  color: hsl(0, 36%, 70%);
+}
+
+.thin {
+  font-weight: 300;
+}
+
+.container {
+  background: url(/images/bg-pattern-desktop.svg) no-repeat center;
+  background-size: cover;
+}
+
+/**FORM**/
+
+form {
+  width: 100%;
+}
+
+input[type="email"] {
+  width: 70%;
+  border: 1px solid hsla(0, 52%, 32%, 0.301);
+  background: transparent;
+  border-radius: 25px;
+  padding: 1em 2em;
+  outline: transparent;
+}
+
+button[type="submit"] {
+  background: url(/images/icon-arrow.svg) no-repeat center,
+    linear-gradient(180deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+  border: none;
+  border-radius: 25px;
+  color: white;
+  padding: 22px 40px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  margin-left: -40px;
+  vertical-align: bottom;
+  outline: none;
+}
+
+::placeholder {
+  color: hsla(0, 45%, 43%, 0.37);
+}
+
+/**FOOTER**/
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+/*************************************
+LAYOUT
+*************************************/
+
+/* MOBILE */
+@media only screen and (max-width: 1024px) {
+  .container {
+    display: grid;
+    grid-template-areas:
+      "logo"
+      "hero"
+      "main";
+  }
+
+  /* STYLES */
+  .hero img {
+    width: 100%;
+  }
+
+  h1,
+  .header-text,
+  form {
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 3em;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    padding-top: 5rem;
+  }
+
+  .header-text {
+    line-height: 1.5em;
+    padding: 3em 3em 3em;
+  }
+
+  /* GRID AREA*/
+  header {
+    grid-area: logo;
+    padding: 2em;
+  }
+
+  .hero {
+    grid-area: hero;
+  }
+
+  .main {
+    grid-area: main;
+  }
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 1024px) {
+  .container {
+    display: grid;
+    height: 100vh;
+    min-width: 100vw;
+    width: 100%;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 0.2fr 1fr;
+    grid-template-areas:
+      "logo sidebar"
+      "main sidebar";
+    overflow: hidden;
+  }
+
+  /** STYLES **/
+  header,
+  .main {
+    margin: 0 5em;
+  }
+
+  h1,
+  p,
+  form {
+    margin-top: 6%;
+  }
+
+  h1 {
+    font-size: 5em;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+  }
+  p {
+    line-height: 1.5em;
+    width: 75%;
+  }
+
+  .hero img {
+    height: 100vh;
+  }
+
+  form {
+    width: 75%;
+  }
+
+  /** GRID AREA**/
+  .hero {
+    grid-area: sidebar;
+  }
+
+  header {
+    grid-area: logo;
+    align-self: center;
+  }
+
+  .main {
+    grid-area: main;
+  }
+}
